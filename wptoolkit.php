@@ -18,12 +18,29 @@ define('WPT_PATH_MODULES', WPT_PATH_ROOT . '/modules/');
 load_plugin_textdomain(WPT_TEXTDOMAIN, false, WPT_PATH_LANGUAGES);
 
 function wpt2_autoload($class){
-	$file = WPT_PATH_MODULES . $class . '/' . $class . '.class.php';
+	$file = WPT_PATH_MODULES . $class . '.class.php';
 	if(file_exists($file)){
 		include_once($file);
 	}
 }
 
 spl_autoload_register('wpt2_autoload');
+
+class WPT2Class {
+
+	public function __construct(){
+		
+	}
+}
+
+function WPT2(){
+	global $WPT2ClassInstance;
+	if(empty($WPT2ClassInstance)){
+		$WPT2ClassInstance = new WPT2Class();
+	}
+	return $WPT2ClassInstance;
+}
+
+
 
 ?>
