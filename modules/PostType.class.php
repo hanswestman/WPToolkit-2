@@ -8,19 +8,19 @@
 class PostType extends ModuleBase {
 
 	var $name = 'Post Type';
-	var $version = '1.0';
+	var $version = '1.1';
 	var $author = 'Hans Westman';
 	var $description = 'Makes it easy to add a new custom post type, just one command easy is needed.';
 
-	var $posttype;
+	var $post_type;
 	var $name_singular;
 	var $name_plural;
 	var $options;
 
-	function __construct($posttype, $name_singular, $name_plural, $options = array()){
+	function __construct($post_type, $name_singular, $name_plural, $options = array()){
 		$this->name_singular = $name_singular;
 		$this->name_plural = $name_plural;
-		$this->posttype = $posttype;
+		$this->post_type = $post_type;
 		$this->options = array_merge(array(
 			'labels' => array(
 				'name' => '',
@@ -62,7 +62,7 @@ class PostType extends ModuleBase {
 	 * Callback function that registers the custom post type.
 	 */
 	function RegisterPostType(){
-		register_post_type(strtolower($this->posttype), $this->options);
+		register_post_type(strtolower($this->post_type), $this->options);
 	}
 
 }

@@ -15,31 +15,9 @@ abstract class ModuleBase {
 
 	function __construct(){
 		
-//		global $BASECLASS;
-//		if($BASECLASS instanceof Base){
-//			$this->helpfile = get_template_directory() . '/toolkit/help/' . get_class($this) . '.html';
-//			$BASECLASS->RegisterModule($this->name, $this->version, $this->author, $this->description);
-//			add_action('admin_menu', array(&$this, 'CreateMenuPage'));
-//		}
+		WPT2()->RegisterModule($this->name, $this->version, $this->author, $this->description);
+
 	}
-
-	/**
-	 * Creates a submenu page for the modules documentation.
-	 * @global Base $BASECLASS
-	 */
-//	function CreateMenuPage(){
-//		global $BASECLASS;
-//		if(file_exists($this->helpfile)){
-//			add_submenu_page(strtolower($BASECLASS->title), $this->name . ' ' . __('About', WPT_TEXTDOMAIN), $this->name, 'manage_options', strtolower($BASECLASS->title) . '-' . preg_replace('/\s/', '', strtolower($this->name)), array(&$this, 'ShowMenuPage'));
-//		}
-//	}
-
-	/**
-	 * Displays the content of the submenu page.
-	 */
-//	function ShowMenuPage(){
-//		echo('<div class="wrapper">' . file_get_contents($this->helpfile) . '</div>');
-//	}
 
 }
 
