@@ -7,6 +7,7 @@ abstract class MetaBoxBase {
 	var $metaName;
 	var $fieldSettings;
 	var $inputValue;
+	var $settings;
 	
 	function __construct(&$post_id, $inputName, $metaName, $fieldSettings, $inputValue){
 		$this->post_id = $post_id;
@@ -61,9 +62,15 @@ abstract class MetaBoxBase {
 	
 	function RenderWrapperStart(){
 		echo('<div>');
+		if($this->IsMultiple()){
+			echo('<div class="wpt-multiple-input-container" data-min-inputs="' . $this->settings['multiple_min'] . '" data-max-inputs="' . $this->settings['multiple_max'] . '">');
+		}
 	}
 	
 	function RenderWrapperEnd(){
+		if($this->IsMultiple()){
+			echo('</div>');
+		}
 		echo('</div>');
 	}
 	
@@ -77,6 +84,10 @@ abstract class MetaBoxBase {
 		if(!empty($label)){
 			echo('<label for="' . $this->inputName . '"><strong>' . $label . '</strong></label><br>');
 		}
+	}
+	
+	function IsMultiple(){
+		return (isset($this->settings['multiple']) && $this->settings['multiple'] === true);
 	}
 	
 }

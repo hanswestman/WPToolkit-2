@@ -9,7 +9,7 @@
 class MetaBox extends ModuleBase {
 
 	var $name = 'Metabox';
-	var $version = '2.0';
+	var $version = '2.1';
 	var $author = 'Hans Westman';
 	var $description = 'Adds metaboxes with various types of input fields.';
 
@@ -23,8 +23,8 @@ class MetaBox extends ModuleBase {
 
 		add_action('add_meta_boxes', array(&$this, 'RegisterMetaBoxes'));
 		add_action('save_post', array(&$this, 'SaveMetaValues'));
-		//add_action('delete_post', array(&$this, 'DeleteMetaValues'));
-		//add_action('admin_enqueue_scripts', array(&$this, 'EnqueueScripts'));
+		//TODO: add_action('delete_post', array(&$this, 'DeleteMetaValues'));
+		add_action('admin_enqueue_scripts', array(&$this, 'EnqueueScripts'));
 
 		parent::__construct();
 	}
@@ -113,6 +113,34 @@ class MetaBox extends ModuleBase {
 	
 	static function GetClassName($inputType){
 		return 'MetaBox' . ucfirst($inputType);
+	}
+	
+	function EnqueueScripts(){
+		//wp_enqueue_script('WPToolkitMetabox-js', WPT_ASSETS_URL . 'js/WPToolkitMetaBox.js', array('jquery'), '1.0', true);
+		//wp_enqueue_style('WPToolkitMetabox-css', WPT_ASSETS_URL . 'css/WPToolkitMetaBox.css', false, '1.0');
+
+		$screen = get_current_screen();
+		if(!empty($screen->post_type)){
+			$activePostType = $screen->post_type;
+			if(!empty($this->config[$activePostType])){
+				foreach($this->config[$activePostType] as $metabox){
+					if(!empty($metabox)){
+						foreach($metabox as $fields){
+							switch($fields['type']){
+								case 'colorpicker':
+									wp_enqueue_script('wp-color-picker');
+									wp_enqueue_style('wp-color-picker');
+									break;
+								case 'date':
+									wp_enqueue_script('jquery-ui-datepicker');	
+									wp_enqueue_style('jquery-ui-lightness', WPT_ASSETS_URL . 'css/ui-lightness/jquery-ui-1.10.3.custom.min.css', array(), '1.10.3');
+									break;
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }
 ?>

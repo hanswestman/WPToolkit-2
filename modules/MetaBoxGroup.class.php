@@ -11,10 +11,9 @@ class MetaBoxGroup extends MetaBoxBase {
 		'style' => '',
 		'multiple' => 'false',
 		'multiple_min' => 1,
-		'multiple_max' => -1,
-	); 
+		'multiple_max' => 100,
+	);
 	
-	var $settings;
 	var $attributes;
 	var $fields = array();
 	

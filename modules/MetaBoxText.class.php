@@ -16,7 +16,6 @@ class MetaBoxText extends MetaBoxBase {
 		'multiple_max' => -1,
 	); 
 	
-	var $settings;
 	var $attributes;
 	
 	public function __construct(&$post_id, $inputName, $metaName, $fieldSettings, $inputValue){
@@ -39,6 +38,9 @@ class MetaBoxText extends MetaBoxBase {
 	public function Render(){
 		$this->RenderWrapperStart();
 		$this->RenderLabel($this->settings['label']);
+		
+		//TODO: Ge alla multiples en wrapper.
+		//TODO: Räkna min antal, loopa ut så många, finns bara en så ska knappen vara dold.
 		
 		echo('<input' . $this->BuildAttributes($this->attributes) . '>');
 		
