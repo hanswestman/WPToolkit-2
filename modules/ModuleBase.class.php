@@ -3,7 +3,7 @@
 /**
  * Abstract class that can be used to extend normal modules with extra automatic functionality.
  * @package WP Toolkit 2
- * @author Hans Westman <hans@thefarm.se>
+ * @author Hans Westman <hanswestman@gmail.com>
  */
 abstract class ModuleBase {
 

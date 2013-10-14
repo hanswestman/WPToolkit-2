@@ -3,7 +3,7 @@
 /**
  * Class used to register post types with a oneline-command in config.
  * @package WP Toolkit 2
- * @author Hans Westman <hans@thefarm.se>
+ * @author Hans Westman <hanswestman@gmail.com>
  */
 class PostType extends ModuleBase {
 
