@@ -14,6 +14,7 @@ define('WPT_TEXTDOMAIN', 'wpt2');
 define('WPT_PATH_ROOT', dirname(__FILE__));
 define('WPT_PATH_LANGUAGES', WPT_PATH_ROOT . '/languages/');
 define('WPT_PATH_MODULES', WPT_PATH_ROOT . '/modules/');
+define('WPT_PATH_TEMPLATES', WPT_PATH_ROOT . '/templates/');
 define('WPT_ASSETS_URL', plugins_url('assets/' , __FILE__ ));
 
 load_plugin_textdomain(WPT_TEXTDOMAIN, false, WPT_PATH_LANGUAGES);
@@ -45,7 +46,10 @@ class WPT2Class {
 	}
 	
 	function PrintBasePage(){
-		print_r($this->loadedModules);
+		extract(array(
+			'modules' => $this->loadedModules,
+		));
+		include_once(WPT_PATH_TEMPLATES . 'admin-base.php');
 	}
 	
 	function RegisterModule($name, $version, $author = '', $description = ''){
