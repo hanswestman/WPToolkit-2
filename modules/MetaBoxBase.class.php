@@ -39,7 +39,7 @@ abstract class MetaBoxBase {
 	function SetDefaults($defaults, $newSettings){
 		$settings = array();
 		foreach($defaults as $key => $value){
-			if(is_array($value)){
+			if(isset($newSettings[$key]) && is_array($value) && is_array($newSettings[$key])){
 				$settings[$key] = array_merge($value, $newSettings[$key]);
 			}
 			else {

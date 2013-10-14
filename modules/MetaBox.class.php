@@ -92,7 +92,7 @@ class MetaBox extends ModuleBase {
 					
 					$metaData = self::NormalizeMeta(get_post_meta($post_id));
 					$inputName = $_POST['post_type'] . '_' . preg_replace('/\s/', '_', $section) . '_' . $metaName;
-					$input = new $className($post_id, $inputName, $metaName, $metaField, $metaData[$metaName]);
+					$input = new $className($post_id, $inputName, $metaName, $metaField, empty($metaData[$metaName]) ? null : $metaData[$metaName]);
 					$input->Save();
 				}
 			}
