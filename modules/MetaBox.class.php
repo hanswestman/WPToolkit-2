@@ -116,7 +116,7 @@ class MetaBox extends ModuleBase {
 	}
 	
 	function EnqueueScripts(){
-		//wp_enqueue_script('WPToolkitMetabox-js', WPT_ASSETS_URL . 'js/WPToolkitMetaBox.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('wpt-admin', WPT_ASSETS_URL . 'js/src/admin-addmore.js', array('jquery'), '1.0', true);
 		//wp_enqueue_style('WPToolkitMetabox-css', WPT_ASSETS_URL . 'css/WPToolkitMetaBox.css', false, '1.0');
 
 		$screen = get_current_screen();

@@ -5,7 +5,8 @@
 		var $inputs = $multiContainer.find('.wpt-muliple-input');
 		var minInputs = Math.min(1, ($multiContainer.data('min-inputs') || 1));
 		var maxInputs = Math.min(100, ($multiContainer.data('max-inputs') || 100));
-		var $template = $inputs.eq(0).clone().find('input,textarea,select').val('');
+		var $template = $inputs.eq(0).clone();
+		$template.find('input,textarea,select').val('');
 		
 		function wptReloadItems(){
 			$inputs = $multiContainer.find('.wpt-muliple-input');
@@ -15,15 +16,22 @@
 			else {
 				$('.wpt-muliple-input-add-more').show();
 			}
+			
+			if($inputs.length > 1){
+				$inputs.find('.wpt-multiple-input-remove').show();
+			}
+			else {
+				$inputs.find('.wpt-multiple-input-remove').hide();
+			}
 		}
 		
 		$('.wpt-muliple-input-add-more').on('click', function(ev){
 			ev.preventDefault();
-			$template.clone().appendTo($multiContainer);
+			$template.clone().insertAfter($inputs.last());
 			wptReloadItems();
 		});
 		
-		$multiContainer.delegate('click', '.wpt-multiple-input-remove', function(ev){
+		$multiContainer.delegate('.wpt-multiple-input-remove', 'click', function(ev){
 			ev.preventDefault();
 			$(this).parents('.wpt-muliple-input').remove();
 			wptReloadItems();

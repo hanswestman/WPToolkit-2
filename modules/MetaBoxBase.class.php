@@ -23,12 +23,24 @@ abstract class MetaBoxBase {
 	
 	function Save(){
 		if(isset($_POST[$this->inputName])){
+			
+			if(is_array($_POST[$this->inputName])){
+				$values = array();
+				foreach($_POST[$this->inputName] as $postField){
+					if(!empty($postField)){
+						$values[] = $postField;
+					}
+				}
+				
+				$_POST[$this->inputName] = $values;
+			}
+			
 			if(!empty($this->inputValue)){
 				if(empty($_POST[$this->inputName])){
 					delete_post_meta($this->post_id, $this->metaName);
 				}
 				else {
-					update_post_meta($this->post_id, $this->metaName, $_POST[$this->inputName], $this->inputValue);
+					update_post_meta($this->post_id, $this->metaName, $_POST[$this->inputName]);
 				}
 			}
 			else {
@@ -87,7 +99,7 @@ abstract class MetaBoxBase {
 	}
 	
 	function IsMultiple(){
-		return (isset($this->settings['multiple']) && $this->settings['multiple'] === true);
+		return (isset($this->settings['multiple']) && ($this->settings['multiple'] === true || $this->settings['multiple'] === 'true'));
 	}
 	
 }

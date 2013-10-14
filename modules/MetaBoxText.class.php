@@ -4,14 +4,13 @@ class MetaBoxText extends MetaBoxBase {
 	
 	var $defaults = array(
 		'type' => 'text',
-		'name' => '',
 		'label' => '',
 		'description' => '',
 		'placeholder' => '',
 		'classes' => array('wpt-input-text'),
 		'style' => '',
 		'default' => '',
-		'multiple' => 'false',
+		'multiple' => false,
 		'multiple_min' => 1,
 		'multiple_max' => -1,
 	); 
@@ -38,11 +37,29 @@ class MetaBoxText extends MetaBoxBase {
 	public function Render(){
 		$this->RenderWrapperStart();
 		$this->RenderLabel($this->settings['label']);
-		
+		if($this->IsMultiple()){
+			$values = unserialize($this->inputValue);
+			
+			$numberOfBoxes = (count($values) > $this->settings['multiple_min']) ? count($values) : $this->settings['multiple_min'];
+			
+			for($i = 0; $i < $numberOfBoxes; $i++){
+				echo('<div class="wpt-muliple-input">');
+				$newAttributes = $this->attributes;
+				$newAttributes['name'] .= '[]';
+				$newAttributes['value'] = (empty($values[$i])) ? '' : $values[$i];
+				echo('<input' . $this->BuildAttributes($newAttributes) . '>');
+				echo('<a href="#" class="wpt-multiple-input-remove">&times;</a>');
+				echo('</div>');
+			}
+			
+			echo('<a href="#" class="wpt-muliple-input-add-more">Add more</a>');
+		}
+		else {
+			echo('<input' . $this->BuildAttributes($this->attributes) . '>');
+		}
 		//TODO: Ge alla multiples en wrapper.
 		//TODO: Räkna min antal, loopa ut så många, finns bara en så ska knappen vara dold.
-		
-		echo('<input' . $this->BuildAttributes($this->attributes) . '>');
+
 		
 		$this->RenderDescription($this->settings['description']);
 		$this->RenderWrapperEnd();
