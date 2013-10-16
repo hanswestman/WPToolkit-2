@@ -12,12 +12,10 @@
 define('WPT_VERSION', '0.1');
 define('WPT_TEXTDOMAIN', 'wpt2');
 define('WPT_PATH_ROOT', dirname(__FILE__));
-define('WPT_PATH_LANGUAGES', WPT_PATH_ROOT . '/languages/');
+define('WPT_PATH_LANGUAGES', basename(WPT_PATH_ROOT) . '/languages/');
 define('WPT_PATH_MODULES', WPT_PATH_ROOT . '/modules/');
 define('WPT_PATH_TEMPLATES', WPT_PATH_ROOT . '/templates/');
 define('WPT_ASSETS_URL', plugins_url('assets/' , __FILE__ ));
-
-load_plugin_textdomain(WPT_TEXTDOMAIN, false, WPT_PATH_LANGUAGES);
 
 function wpt2_autoload($class){
 	$file = WPT_PATH_MODULES . $class . '.class.php';
@@ -27,6 +25,7 @@ function wpt2_autoload($class){
 }
 
 spl_autoload_register('wpt2_autoload');
+load_plugin_textdomain(WPT_TEXTDOMAIN, false, WPT_PATH_LANGUAGES);
 
 /**
  * Base class for WP Toolkit 2

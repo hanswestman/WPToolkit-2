@@ -7,8 +7,8 @@
 			<tr>
 				<th style="" class="manage-column column-cb check-column" id="cb" scope="col">
 				</th>
-				<th style="" class="manage-column column-name" id="name" scope="col">Modules</th>
-				<th style="" class="manage-column column-description" id="description" scope="col">Description</th>
+				<th style="" class="manage-column column-name" id="name" scope="col"><?php _e('Modules', WPT_TEXTDOMAIN); ?></th>
+				<th style="" class="manage-column column-description" id="description" scope="col"><?php _e('Description', WPT_TEXTDOMAIN); ?></th>
 			</tr>
 		</thead>
 
@@ -16,8 +16,8 @@
 			<tr>
 				<th style="" class="manage-column column-cb check-column" scope="col">
 				</th>
-				<th style="" class="manage-column column-name" scope="col">Modules</th>
-				<th style="" class="manage-column column-description" scope="col">Description</th>
+				<th style="" class="manage-column column-name" scope="col"><?php _e('Modules', WPT_TEXTDOMAIN); ?></th>
+				<th style="" class="manage-column column-description" scope="col"><?php _e('Description', WPT_TEXTDOMAIN); ?></th>
 			</tr>
 		</tfoot>
 

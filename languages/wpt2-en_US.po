@@ -1,0 +1,68 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WP Toolkit 2\n"
+"POT-Creation-Date: 2013-10-16 10:33+0100\n"
+"PO-Revision-Date: 2013-10-16 10:33+0100\n"
+"Last-Translator: Hans Westman <hans@thefarm.se>\n"
+"Language-Team: Hans Westman <hanswestman@gmail.com>\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.5\n"
+"X-Poedit-KeywordsList: __;_e;_x;_n\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../modules/PostType.class.php:28
+msgid "Add new"
+msgstr ""
+
+#: ../modules/PostType.class.php:29
+#, php-format
+msgid "Add new %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:30
+#, php-format
+msgid "Edit %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:31
+#, php-format
+msgid "New %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:32
+#, php-format
+msgid "All %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:33
+#, php-format
+msgid "View %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:34
+#, php-format
+msgid "Search %s"
+msgstr ""
+
+#: ../modules/PostType.class.php:35
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: ../modules/PostType.class.php:36
+#, php-format
+msgid "No %s found in trash"
+msgstr ""
+
+#: ../templates/admin-base.php:10 ../templates/admin-base.php:19
+msgid "Modules"
+msgstr ""
+
+#: ../templates/admin-base.php:11 ../templates/admin-base.php:20
+msgid "Description"
+msgstr ""
