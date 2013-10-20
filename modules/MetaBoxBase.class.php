@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Abstract class that should be extended when adding more input types.
+ * @package WP Toolkit 2
+ * @author Hans Westman <hanswestman@gmail.com>
+ */
 abstract class MetaBoxBase {
 
 	var $post;
@@ -9,6 +14,14 @@ abstract class MetaBoxBase {
 	var $inputValue;
 	var $settings;
 	
+	/**
+	 * The constructor should be called from the child constructor
+	 * @param integer $post_id Post ID.
+	 * @param string $inputName The name of the form field.
+	 * @param string $metaName The name of the meta field.
+	 * @param array $fieldSettings Array of settings.
+	 * @param string $inputValue Previously saved value.
+	 */
 	function __construct(&$post_id, $inputName, $metaName, $fieldSettings, $inputValue){
 		$this->post_id = $post_id;
 		$this->inputName = $inputName;
@@ -21,6 +34,9 @@ abstract class MetaBoxBase {
 		
 	}
 	
+	/**
+	 * Basic save callback, saves a single value. Should be used when you're not saving multiples or groups of values.
+	 */
 	function Save(){
 		if(isset($_POST[$this->inputName])){
 			
@@ -49,6 +65,12 @@ abstract class MetaBoxBase {
 		}
 	}
 	
+	/**
+	 * Extends the default settings with the new settings.
+	 * @param array $defaults
+	 * @param array $newSettings
+	 * @return array
+	 */
 	function SetDefaults($defaults, $newSettings){
 		$settings = array();
 		foreach($defaults as $key => $value){
@@ -62,6 +84,11 @@ abstract class MetaBoxBase {
 		return $settings;
 	}
 	
+	/**
+	 * Builds array into string of attributes and values in HTML format.
+	 * @param array $attributes Associative array of attributes.
+	 * @return string
+	 */
 	function BuildAttributes($attributes = array()){
 		$attrStrings = array();
 		if(!empty($attributes)){
@@ -72,6 +99,9 @@ abstract class MetaBoxBase {
 		return implode('', $attrStrings);
 	}
 	
+	/**
+	 * Simple function that renders the start of a input field.
+	 */
 	function RenderWrapperStart(){
 		echo('<div>');
 		if($this->IsMultiple()){
@@ -79,6 +109,9 @@ abstract class MetaBoxBase {
 		}
 	}
 	
+	/**
+	 * Simple function that renders the end of a input field.
+	 */
 	function RenderWrapperEnd(){
 		if($this->IsMultiple()){
 			echo('</div>');
@@ -86,18 +119,30 @@ abstract class MetaBoxBase {
 		echo('</div>');
 	}
 	
+	/**
+	 * Renders the field description if it exists.
+	 * @param string $description
+	 */
 	function RenderDescription($description){
 		if(!empty($description)){
 			echo('<p class="wpt-input-description"><i>' . $description . '</i></p>');
 		}
 	}
 	
+	/**
+	 * Renders the label if it exists.
+	 * @param string $label
+	 */
 	function RenderLabel($label){
 		if(!empty($label)){
 			echo('<label for="' . $this->inputName . '"><strong>' . $label . '</strong></label><br>');
 		}
 	}
 	
+	/**
+	 * Check if field has multiples activated
+	 * @return type
+	 */
 	function IsMultiple(){
 		return (isset($this->settings['multiple']) && ($this->settings['multiple'] === true || $this->settings['multiple'] === 'true'));
 	}

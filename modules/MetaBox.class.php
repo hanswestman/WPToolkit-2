@@ -63,7 +63,11 @@ class MetaBox extends ModuleBase {
 		}
 	}
 	
-	
+	/**
+	 * WP Save callback function. Iterates all input field for this post and saves the values.
+	 * @param integer $post_id
+	 * @return void
+	 */
 	function SaveMetaValues($post_id){
 		if(defined('DOING_AUTOSAVE') && DOING_AUTOSAVE){
 			return;
@@ -111,10 +115,18 @@ class MetaBox extends ModuleBase {
 		return $rawMeta;
 	}
 	
+	/**
+	 * Helper function which generates the class name from a given input type.
+	 * @param string $inputType
+	 * @return string
+	 */
 	static function GetClassName($inputType){
 		return 'MetaBox' . ucfirst($inputType);
 	}
 	
+	/**
+	 * WP Callback function which enqueues scripts and styles if certain input types requires them.
+	 */
 	function EnqueueScripts(){
 		wp_enqueue_script('wpt-admin', WPT_ASSETS_URL . 'js/src/admin-addmore.js', array('jquery'), '1.0', true);
 		//wp_enqueue_style('WPToolkitMetabox-css', WPT_ASSETS_URL . 'css/WPToolkitMetaBox.css', false, '1.0');
