@@ -1,60 +1,72 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Toolkit 2\n"
-"POT-Creation-Date: 2013-10-16 10:33+0100\n"
-"PO-Revision-Date: 2013-10-16 10:33+0100\n"
+"POT-Creation-Date: 2015-10-24 22:58+0200\n"
+"PO-Revision-Date: 2015-10-24 22:58+0200\n"
 "Last-Translator: Hans Westman <hans@thefarm.se>\n"
 "Language-Team: Hans Westman <hanswestman@gmail.com>\n"
-"Language: English\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.8.6\n"
 "X-Poedit-KeywordsList: __;_e;_x;_n\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../modules/PostType.class.php:28
-msgid "Add new"
+#: ../modules/AjaxAPI.class.php:42
+msgid "Missing argument \"command\""
+msgstr ""
+
+#: ../modules/AjaxAPI.class.php:55
+msgid "The command does not exist as a method"
+msgstr ""
+
+#: ../modules/AjaxAPI.class.php:59
+msgid "The command does not exist"
 msgstr ""
 
 #: ../modules/PostType.class.php:29
-#, php-format
-msgid "Add new %s"
+msgid "Add new"
 msgstr ""
 
 #: ../modules/PostType.class.php:30
 #, php-format
-msgid "Edit %s"
+msgid "Add new %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:31
 #, php-format
-msgid "New %s"
+msgid "Edit %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:32
 #, php-format
-msgid "All %s"
+msgid "New %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:33
 #, php-format
-msgid "View %s"
+msgid "All %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:34
 #, php-format
-msgid "Search %s"
+msgid "View %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:35
 #, php-format
-msgid "No %s found"
+msgid "Search %s"
 msgstr ""
 
 #: ../modules/PostType.class.php:36
+#, php-format
+msgid "No %s found"
+msgstr ""
+
+#: ../modules/PostType.class.php:37
 #, php-format
 msgid "No %s found in trash"
 msgstr ""
