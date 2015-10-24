@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Toolkit 2\n"
-"POT-Creation-Date: 2015-10-24 22:57+0200\n"
-"PO-Revision-Date: 2015-10-24 22:58+0200\n"
+"POT-Creation-Date: 2015-10-24 23:22+0200\n"
+"PO-Revision-Date: 2015-10-24 23:23+0200\n"
 "Last-Translator: Hans Westman <hans@thefarm.se>\n"
 "Language-Team: Hans Westman <hanswestman@gmail.com>\n"
 "Language: sv\n"
@@ -15,9 +15,13 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../modules/AjaxAPI.class.php:42
+#: ../modules/AjaxAPI.class.php:44
 msgid "Missing argument \"command\""
 msgstr "Saknar argument \"command\""
+
+#: ../modules/AjaxAPI.class.php:46
+msgid "The command is not matching with the required prefix"
+msgstr "Kommandot matchar inte med prefixet som krävs"
 
 #: ../modules/AjaxAPI.class.php:55
 msgid "The command does not exist as a method"

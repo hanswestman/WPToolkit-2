@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: WP Toolkit 2\n"
-"POT-Creation-Date: 2015-10-24 22:58+0200\n"
-"PO-Revision-Date: 2015-10-24 22:58+0200\n"
+"POT-Creation-Date: 2015-10-24 23:23+0200\n"
+"PO-Revision-Date: 2015-10-24 23:24+0200\n"
 "Last-Translator: Hans Westman <hans@thefarm.se>\n"
 "Language-Team: Hans Westman <hanswestman@gmail.com>\n"
 "Language: en\n"
@@ -15,66 +15,70 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../modules/AjaxAPI.class.php:42
+#: ../modules/AjaxAPI.class.php:44
 msgid "Missing argument \"command\""
-msgstr ""
+msgstr "Missing argument \"command\""
+
+#: ../modules/AjaxAPI.class.php:46
+msgid "The command is not matching with the required prefix"
+msgstr "The command is not matching with the required prefix"
 
 #: ../modules/AjaxAPI.class.php:55
 msgid "The command does not exist as a method"
-msgstr ""
+msgstr "The command does not exist as a method"
 
 #: ../modules/AjaxAPI.class.php:59
 msgid "The command does not exist"
-msgstr ""
+msgstr "The command does not exist"
 
 #: ../modules/PostType.class.php:29
 msgid "Add new"
-msgstr ""
+msgstr "Add new"
 
 #: ../modules/PostType.class.php:30
 #, php-format
 msgid "Add new %s"
-msgstr ""
+msgstr "Add new %s"
 
 #: ../modules/PostType.class.php:31
 #, php-format
 msgid "Edit %s"
-msgstr ""
+msgstr "Edit %s"
 
 #: ../modules/PostType.class.php:32
 #, php-format
 msgid "New %s"
-msgstr ""
+msgstr "New %s"
 
 #: ../modules/PostType.class.php:33
 #, php-format
 msgid "All %s"
-msgstr ""
+msgstr "All %s"
 
 #: ../modules/PostType.class.php:34
 #, php-format
 msgid "View %s"
-msgstr ""
+msgstr "View %s"
 
 #: ../modules/PostType.class.php:35
 #, php-format
 msgid "Search %s"
-msgstr ""
+msgstr "Search %s"
 
 #: ../modules/PostType.class.php:36
 #, php-format
 msgid "No %s found"
-msgstr ""
+msgstr "No %s found"
 
 #: ../modules/PostType.class.php:37
 #, php-format
 msgid "No %s found in trash"
-msgstr ""
+msgstr "No %s found in trash"
 
 #: ../templates/admin-base.php:10 ../templates/admin-base.php:19
 msgid "Modules"
-msgstr ""
+msgstr "Modules"
 
 #: ../templates/admin-base.php:11 ../templates/admin-base.php:20
 msgid "Description"
-msgstr ""
+msgstr "Description"
