@@ -139,7 +139,7 @@ class MetaBox extends ModuleBase {
 					if(!empty($metabox)){
 						foreach($metabox as $fields){
 							switch($fields['type']){
-								case 'colorpicker':
+								case 'color':
 									wp_enqueue_script('wp-color-picker');
 									wp_enqueue_style('wp-color-picker');
 									break;

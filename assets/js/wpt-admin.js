@@ -5,10 +5,10 @@
 (function($){
 
 	if(typeof $.fn.wpColorPicker === 'function'){
-		$('.wpt-colorpicker').each(function(){$(this).wpColorPicker();});
+		$('.wpt-input-colorpicker').each(function(){$(this).wpColorPicker();});
 	}
 	if(typeof $.fn.datepicker === 'function'){
-		$('.wpt-datepicker').each(function(){
+		$('.wpt-input-datepicker').each(function(){
 			var input = $(this);
 			var format = input.attr('data-format') || 'yy-mm-dd';
 			input.datepicker({dateFormat: format});
