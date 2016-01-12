@@ -59,7 +59,7 @@ abstract class MetaBoxBase {
 				} else {
 					update_post_meta($this->post_id, $this->metaName, $newValue);
 				}
-			} else if(Metabox::isEmpty($newValue)) {
+			} else if(!Metabox::isEmpty($newValue)) {
 				add_post_meta($this->post_id, $this->metaName, $newValue);
 			}
 		}
@@ -103,18 +103,12 @@ abstract class MetaBoxBase {
 	 */
 	function RenderWrapperStart(){
 		echo('<div>');
-		/*if($this->IsMultiple()){
-			echo('<div class="wpt-multiple-input-container" data-min-inputs="' . $this->settings['multiple_min'] . '" data-max-inputs="' . $this->settings['multiple_max'] . '">');
-		}*/
 	}
 	
 	/**
 	 * Simple function that renders the end of a input field.
 	 */
 	function RenderWrapperEnd(){
-		/*if($this->IsMultiple()){
-			echo('</div>');
-		}*/
 		echo('</div>');
 	}
 	
@@ -137,15 +131,6 @@ abstract class MetaBoxBase {
 			echo('<label for="' . $this->inputName . '"><strong>' . $label . '</strong></label><br>');
 		}
 	}
-	
-	/**
-	 * Check if field has multiples activated
-	 * @return type
-	 */
-	/*function IsMultiple(){
-		return (isset($this->settings['multiple']) && ($this->settings['multiple'] === true || $this->settings['multiple'] === 'true'));
-	}*/
-	
 }
 
 ?>

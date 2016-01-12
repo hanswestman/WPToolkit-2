@@ -1,15 +1,16 @@
 <?php
 
-class MetaBoxText extends MetaBoxBase {
+class MetaBoxDate extends MetaBoxBase {
 	
 	var $defaults = array(
-		'type' => 'text',
+		'type' => 'date',
 		'label' => '',
 		'description' => '',
 		'placeholder' => '',
-		'classes' => array('wpt-input-text'),
+		'classes' => array('wpt-datepicker'),
 		'style' => '',
 		'default' => '',
+		'format' => 'yy-mm-dd', //http://api.jqueryui.com/datepicker/#option-dateFormat
 	); 
 	
 	var $attributes;
@@ -28,6 +29,7 @@ class MetaBoxText extends MetaBoxBase {
 			'type' => 'text',
 			'name' => $inputName,
 			'id' => $inputName,
+			'data-format' => $this->settings['format'],
 		);
 	}
 	
@@ -36,7 +38,7 @@ class MetaBoxText extends MetaBoxBase {
 		$this->RenderLabel($this->settings['label']);
 
 		echo('<input' . $this->BuildAttributes($this->attributes) . '>');
-
+		
 		$this->RenderDescription($this->settings['description']);
 		$this->RenderWrapperEnd();
 	}

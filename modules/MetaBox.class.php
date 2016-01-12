@@ -55,7 +55,7 @@ class MetaBox extends ModuleBase {
 		$metas = $metaBoxes[$type][$section];
 		foreach($metas as $metaName => $metaField){
 			if(isset($metaField['type'])){
-				$className = self::GetClassName($metaField['type']);
+				$className = self::getClassName($metaField['type']);
 				$name = $type . '_' . preg_replace('/\s/', '_', $section) . '_' . $metaName;
 				$input = new $className($post->ID, $name, $metaName, $metaField, (Metabox::isEmpty($metaData[$metaName])) ? null : $metaData[$metaName]);
 				$input->Render();
@@ -88,7 +88,7 @@ class MetaBox extends ModuleBase {
 			$metas = $config[$_POST['post_type']][$section];
 			foreach($metas as $metaName => $metaField){
 				if(isset($metaField['type'])){
-					$className = self::GetClassName($metaField['type']);
+					$className = self::getClassName($metaField['type']);
 					if(wp_is_post_revision($post_id)){
 						$originalPost = get_post($post_id);
 						$post_id = $originalPost->post_parent;
@@ -120,7 +120,7 @@ class MetaBox extends ModuleBase {
 	 * @param string $inputType
 	 * @return string
 	 */
-	static function GetClassName($inputType){
+	static function getClassName($inputType){
 		return 'MetaBox' . ucfirst($inputType);
 	}
 	
@@ -128,7 +128,7 @@ class MetaBox extends ModuleBase {
 	 * WP Callback function which enqueues scripts and styles if certain input types requires them.
 	 */
 	function EnqueueScripts(){
-		wp_enqueue_script('wpt-admin', WPT_ASSETS_URL . 'js/src/admin-addmore.js', array('jquery'), '1.0', true);
+		wp_enqueue_script('wpt-admin', WPT_ASSETS_URL . 'js/wpt-admin.js', array('jquery'), '1.0', true);
 		//wp_enqueue_style('WPToolkitMetabox-css', WPT_ASSETS_URL . 'css/WPToolkitMetaBox.css', false, '1.0');
 
 		$screen = get_current_screen();
@@ -144,7 +144,7 @@ class MetaBox extends ModuleBase {
 									wp_enqueue_style('wp-color-picker');
 									break;
 								case 'date':
-									wp_enqueue_script('jquery-ui-datepicker');	
+									wp_enqueue_script('jquery-ui-datepicker');
 									wp_enqueue_style('jquery-ui-lightness', WPT_ASSETS_URL . 'css/ui-lightness/jquery-ui-1.10.3.custom.min.css', array(), '1.10.3');
 									break;
 							}
