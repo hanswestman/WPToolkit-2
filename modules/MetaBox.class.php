@@ -9,7 +9,7 @@
 class MetaBox extends ModuleBase {
 
 	var $name = 'Metabox';
-	var $version = '2.1';
+	var $version = '2.4';
 	var $author = '<a href="http://hanswestman.se" target="_blank">Hans Westman</a>';
 	var $description = 'Adds metaboxes with various types of input fields.';
 

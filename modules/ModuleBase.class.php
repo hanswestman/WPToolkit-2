@@ -18,7 +18,7 @@ abstract class ModuleBase {
 		WPT2()->RegisterModule($this->name, $this->version, $this->author, $this->description);
 
 		if($this->helpfile){
-			WPT2()->LoadHelp($this->name);
+			WPT2()->LoadHelp(get_class($this));
 		}
 
 	}

@@ -55,8 +55,7 @@ class AjaxAPI extends ModuleBase {
 				} else{
 					AjaxAPI::ReturnError(__('The command does not exist as a method', WPT_TEXTDOMAIN));
 				}
-			}
-			else{
+			} else{
 				AjaxAPI::ReturnError(__('The command does not exist', WPT_TEXTDOMAIN));
 			}
 		}
