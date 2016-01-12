@@ -12,6 +12,7 @@ class AjaxAPI extends ModuleBase {
 	var $version = '1.5';
 	var $author = '<a href="http://hanswestman.se" target="_blank">Hans Westman</a>';
 	var $description = 'Centralizes AJAX calls. Makes PHP functions callable from frontend by AJAX.';
+	var $helpfile = true;
 
 	var $settings = array(
 		'allowJSONP' => false,

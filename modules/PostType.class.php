@@ -11,6 +11,7 @@ class PostType extends ModuleBase {
 	var $version = '1.1';
 	var $author = '<a href="http://hanswestman.se" target="_blank">Hans Westman</a>';
 	var $description = 'Makes it easy to add a new custom post type, just one command easy is needed.';
+	var $helpfile = true;
 
 	var $post_type;
 	var $name_singular;

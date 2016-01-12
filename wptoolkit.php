@@ -12,10 +12,12 @@
 define('WPT_VERSION', '0.1');
 define('WPT_TEXTDOMAIN', 'wpt2');
 define('WPT_PATH_ROOT', dirname(__FILE__));
-define('WPT_PATH_LANGUAGES', basename(WPT_PATH_ROOT) . '/languages/');
-define('WPT_PATH_MODULES', WPT_PATH_ROOT . '/modules/');
-define('WPT_PATH_TEMPLATES', WPT_PATH_ROOT . '/templates/');
-define('WPT_ASSETS_URL', plugins_url('assets/' , __FILE__ ));
+define('WPT_PATH_LANGUAGES', basename(WPT_PATH_ROOT) . DIRECTORY_SEPARATOR . 'languages' . DIRECTORY_SEPARATOR);
+define('WPT_PATH_MODULES', WPT_PATH_ROOT . DIRECTORY_SEPARATOR . 'modules' . DIRECTORY_SEPARATOR);
+define('WPT_PATH_TEMPLATES', WPT_PATH_ROOT . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR);
+define('WPT_PATH_HELP', WPT_PATH_ROOT . DIRECTORY_SEPARATOR . 'help' . DIRECTORY_SEPARATOR);
+define('WPT_ASSETS_URL', plugins_url('assets' . DIRECTORY_SEPARATOR , __FILE__ ));
+define('WPT_MENU_SLUG', 'wptoolkit2');
 
 /**
  * Callback function to load class files which are missing.
@@ -39,6 +41,7 @@ load_plugin_textdomain(WPT_TEXTDOMAIN, false, WPT_PATH_LANGUAGES);
 class WPT2Class {
 
 	var $loadedModules = array();
+	var $helpSection = null;
 	
 	public function __construct(){
 		add_action('admin_menu', array(&$this, 'RegisterMenuPages'));
@@ -48,7 +51,7 @@ class WPT2Class {
 	 * WP Callback function that registers a new menu page in the admin panel.
 	 */
 	function RegisterMenuPages(){
-		add_menu_page('WPToolkit', 'WPToolkit 2', 'add_users', 'wptoolkit2', array(&$this, 'PrintBasePage'), WPT_ASSETS_URL . 'img/admin-icon.png'); 
+		add_menu_page('WPToolkit', 'WPToolkit 2', 'add_users', WPT_MENU_SLUG, array(&$this, 'PrintBasePage'), WPT_ASSETS_URL . 'img/admin-icon.png'); 
 	}
 	
 	/**
@@ -76,6 +79,16 @@ class WPT2Class {
 				'description' => $description,
 			);
 		}
+	}
+
+	/**
+	 * Loads the help section module and adds this help file
+	 */
+	function LoadHelp($name){
+		if($this->helpSection == null){
+			$this->helpSection = new WPT2HelpSection();
+		}
+		$this->helpSection->add($name);
 	}
 }
 

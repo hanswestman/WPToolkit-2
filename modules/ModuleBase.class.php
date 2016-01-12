@@ -11,11 +11,15 @@ abstract class ModuleBase {
 	var $version = '';
 	var $author = '';
 	var $description = '';
-	var $helpfile;
+	var $helpfile = false;
 
 	function __construct(){
 		
 		WPT2()->RegisterModule($this->name, $this->version, $this->author, $this->description);
+
+		if($this->helpfile){
+			WPT2()->LoadHelp($this->name);
+		}
 
 	}
 
