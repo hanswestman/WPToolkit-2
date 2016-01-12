@@ -37,7 +37,7 @@ class MetaBoxText extends MetaBoxBase {
 	public function Render(){
 		$this->RenderWrapperStart();
 		$this->RenderLabel($this->settings['label']);
-		if($this->IsMultiple()){
+		/*if($this->IsMultiple()){
 			$values = unserialize($this->inputValue);
 			
 			$numberOfBoxes = (count($values) > $this->settings['multiple_min']) ? count($values) : $this->settings['multiple_min'];
@@ -53,10 +53,10 @@ class MetaBoxText extends MetaBoxBase {
 			}
 			
 			echo('<a href="#" class="wpt-muliple-input-add-more">Add more</a>');
-		}
-		else {
+		}*/
+		//else {
 			echo('<input' . $this->BuildAttributes($this->attributes) . '>');
-		}
+		//}
 		//TODO: Ge alla multiples en wrapper.
 		//TODO: Räkna min antal, loopa ut så många, finns bara en så ska knappen vara dold.
 

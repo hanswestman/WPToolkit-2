@@ -57,7 +57,7 @@ class MetaBox extends ModuleBase {
 			if(isset($metaField['type'])){
 				$className = self::GetClassName($metaField['type']);
 				$name = $type . '_' . preg_replace('/\s/', '_', $section) . '_' . $metaName;
-				$input = new $className($post->ID, $name, $metaName, $metaField, (empty($metaData[$metaName])) ? null : $metaData[$metaName]);
+				$input = new $className($post->ID, $name, $metaName, $metaField, (Metabox::isEmpty($metaData[$metaName])) ? null : $metaData[$metaName]);
 				$input->Render();
 			}
 		}
@@ -96,7 +96,7 @@ class MetaBox extends ModuleBase {
 					
 					$metaData = self::NormalizeMeta(get_post_meta($post_id));
 					$inputName = $_POST['post_type'] . '_' . preg_replace('/\s/', '_', $section) . '_' . $metaName;
-					$input = new $className($post_id, $inputName, $metaName, $metaField, empty($metaData[$metaName]) ? null : $metaData[$metaName]);
+					$input = new $className($post_id, $inputName, $metaName, $metaField, Metabox::isEmpty($metaData[$metaName]) ? null : $metaData[$metaName]);
 					$input->Save();
 				}
 			}
@@ -153,6 +153,15 @@ class MetaBox extends ModuleBase {
 				}
 			}
 		}
+	}
+
+	/**
+	 * The native empty is good for a lot of things, but not when you want to see if a value is set to zero.
+	 * @param mixed $value
+	 * @return boolean
+	 */
+	static function isEmpty($value){
+		return is_numeric($value) || $value == '0' ? false : empty($value); 
 	}
 }
 ?>

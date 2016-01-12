@@ -39,28 +39,28 @@ abstract class MetaBoxBase {
 	 */
 	function Save(){
 		if(isset($_POST[$this->inputName])){
-			
-			if(is_array($_POST[$this->inputName])){
+			$newValue = $_POST[$this->inputName];
+
+			if(is_array($newValue)){
+				die('is array');
 				$values = array();
-				foreach($_POST[$this->inputName] as $postField){
-					if(!empty($postField)){
+				foreach($newValue as $postField){
+					if(!Metabox::isEmpty($postField)){
 						$values[] = $postField;
 					}
 				}
 				
-				$_POST[$this->inputName] = $values;
+				$newValue = $values;
 			}
 			
-			if(!empty($this->inputValue)){
-				if(empty($_POST[$this->inputName])){
+			if(!Metabox::isEmpty($this->inputValue)){
+				if(Metabox::isEmpty($newValue)){
 					delete_post_meta($this->post_id, $this->metaName);
+				} else {
+					update_post_meta($this->post_id, $this->metaName, $newValue);
 				}
-				else {
-					update_post_meta($this->post_id, $this->metaName, $_POST[$this->inputName]);
-				}
-			}
-			else {
-				add_post_meta($this->post_id, $this->metaName, $_POST[$this->inputName]);
+			} else if(Metabox::isEmpty($newValue)) {
+				add_post_meta($this->post_id, $this->metaName, $newValue);
 			}
 		}
 	}
@@ -76,8 +76,7 @@ abstract class MetaBoxBase {
 		foreach($defaults as $key => $value){
 			if(isset($newSettings[$key]) && is_array($value) && is_array($newSettings[$key])){
 				$settings[$key] = array_merge($value, $newSettings[$key]);
-			}
-			else {
+			} else {
 				$settings[$key] = (empty($newSettings[$key])) ? $value : $newSettings[$key];
 			}
 		}
@@ -104,18 +103,18 @@ abstract class MetaBoxBase {
 	 */
 	function RenderWrapperStart(){
 		echo('<div>');
-		if($this->IsMultiple()){
+		/*if($this->IsMultiple()){
 			echo('<div class="wpt-multiple-input-container" data-min-inputs="' . $this->settings['multiple_min'] . '" data-max-inputs="' . $this->settings['multiple_max'] . '">');
-		}
+		}*/
 	}
 	
 	/**
 	 * Simple function that renders the end of a input field.
 	 */
 	function RenderWrapperEnd(){
-		if($this->IsMultiple()){
+		/*if($this->IsMultiple()){
 			echo('</div>');
-		}
+		}*/
 		echo('</div>');
 	}
 	
@@ -143,9 +142,9 @@ abstract class MetaBoxBase {
 	 * Check if field has multiples activated
 	 * @return type
 	 */
-	function IsMultiple(){
+	/*function IsMultiple(){
 		return (isset($this->settings['multiple']) && ($this->settings['multiple'] === true || $this->settings['multiple'] === 'true'));
-	}
+	}*/
 	
 }
 
