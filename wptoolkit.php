@@ -71,12 +71,13 @@ class WPT2Class {
 	 * @param string $author
 	 * @param string $description
 	 */
-	function RegisterModule($name, $version, $author = '', $description = ''){
+	function RegisterModule($name, $version, $author = '', $description = '', $error = false){
 		if(empty($this->loadedModules[$name])){
 			$this->loadedModules[$name] = array(
 				'version' => $version,
 				'author' => $author,
 				'description' => $description,
+				'error' => $error,
 			);
 		}
 	}

@@ -12,10 +12,17 @@ abstract class ModuleBase {
 	var $author = '';
 	var $description = '';
 	var $helpfile = false;
+	var $error = false;
+	/**
+	 * You can set $this->error = true before parent::__construct();
+	 * is run in any child module's constructor to display that the 
+	 * module has an error of some kind. You can for example check for
+	 * compatibility in your constructor and use this to display an error.
+	 */
 
 	function __construct(){
 		
-		WPT2()->RegisterModule($this->name, $this->version, $this->author, $this->description);
+		WPT2()->RegisterModule($this->name, $this->version, $this->author, $this->description, $this->error);
 
 		if($this->helpfile){
 			WPT2()->LoadHelp(get_class($this));

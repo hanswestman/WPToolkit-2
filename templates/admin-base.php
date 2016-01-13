@@ -23,7 +23,8 @@
 
 		<tbody id="the-list">
 			<?php if(!empty($modules)): foreach($modules as $moduleName => $module): ?>
-			<tr class="active" id="wp-toolkit-2">
+			<tr class="active<?php if($module['error']){echo(' update');} ?>" id="wp-toolkit-2">
+				<!--TODO: IF we have an error, display the message-->
 				<th class="check-column" scope="row">
 				</th>
 				<td class="plugin-title">
